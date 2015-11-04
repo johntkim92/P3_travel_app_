@@ -2,7 +2,4 @@
 
 ## A web-based single page app to share and discuss travel stories and photos.
 
-##ANDREW WUZ HERE
-
-##DHL WAS HERES
-#hi
+### Team members: aFreeman dLee jKim Tchiriga
