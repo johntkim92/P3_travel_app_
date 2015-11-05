@@ -24,6 +24,10 @@
       Create New Trip
     </a>
   <hr/>
+  <h3>
+    You are currently logged in as <%= current_user.username %>
+  </h3>
+  <hr/>
   <form action="<%= session_path %>" method="POST">
      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
