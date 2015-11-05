@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
 
 
+  # checking to see if one is logged in
+  get '/amiloggedin' => 'application#amiloggedin'
+
   # setting root
   root 'application#welcome'
 
 
   # users - did not do only yet to limit other RESTful actions - as we may need others to update, delete, etc.
   resources :users
+
+  # session stuff - allows logging in and out
+  # get '/session' => 'session#current_user '
+  post '/session' => 'session#create'
+  delete '/session' => 'session#destroy'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
