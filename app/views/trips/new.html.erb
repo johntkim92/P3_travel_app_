@@ -1,0 +1,24 @@
+ <form action="<%= trips_path %>" method="POST">
+   <input type="hidden" name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+
+  <input type="text" name="trip[title]" placeholder="input title">
+  <br/>
+  <input type="text" name="trip[destination]" placeholder="input destination">
+  <br/>
+  <input type="text" name="trip[description]" placeholder="input description">
+  <br/>
+  <input type="date" name="trip[start_date]" placeholder="input start date">
+  <br/>
+  <input type="date" name="trip[end_date]" placeholder="input end date">
+  <br/>
+  <select name="trip[tags]">
+    <% Trip::TAGS.each do |tag| %>
+      <option value="<%= tag %>">
+        <%= tag %>
+      </option>
+    <% end %>
+  </select>
+  <br/>
+  <input type="submit" value="CREATE TRIP">
+ </form>
