@@ -92,7 +92,8 @@ function initAutocomplete() {
         map: map,
         icon: icon,
         title: place.name,
-        position: place.geometry.location
+        position: place.geometry.location,
+        animation: google.maps.Animation.DROP,
       }));
 
       if (place.geometry.viewport) {
@@ -102,8 +103,17 @@ function initAutocomplete() {
         bounds.extend(place.geometry.location);
       }
     });
-    // map.fitBounds(bounds);
+    map.fitBounds(bounds);
   });
+
+  function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
+
   // [END region_getplaces]
 }
 
