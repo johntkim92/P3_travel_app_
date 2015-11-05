@@ -8,6 +8,14 @@
 </head>
 <body>
 
+<!-- below are for flash messages -->
+
+  <% if flash[:message] %>
+    <div class="flash">
+      <%= flash[:message] %>
+    </div>
+  <% end %>
+
 <%= yield %>
 
 </body>
