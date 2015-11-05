@@ -94,7 +94,9 @@ function initAutocomplete() {
         title: place.name,
         position: place.geometry.location,
         animation: google.maps.Animation.DROP,
-      }));
+      },
+      // marker.addListener('click', toggleBounce)
+      ));
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
@@ -106,13 +108,14 @@ function initAutocomplete() {
     map.fitBounds(bounds);
   });
 
-  function toggleBounce() {
-  if (marker.getAnimation() !== null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
-}
+// Adding bounce funtion
+//   function toggleBounce() {
+//   if (marker.getAnimation() !== null) {
+//     marker.setAnimation(null);
+//   } else {
+//     marker.setAnimation(google.maps.Animation.BOUNCE);
+//   }
+// }
 
   // [END region_getplaces]
 }
