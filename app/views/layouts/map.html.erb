@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Traveler</title>
+  </head>
+  <body>
+    <div id="main_map"></div>
+    <script type="text/javascript">
+      var main_map;
+      function initMap() {
+        main_map = new google.maps.Map(document.GetElementById('map'), {
+          center: latLong,
+          zoom: 6
+        });
+      }
+    </script>
+  </body>
+</html>

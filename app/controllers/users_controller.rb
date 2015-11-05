@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-<<<<<<< HEAD
-=======
-
 
   # create method for user
 
@@ -24,6 +21,4 @@ class UsersController < ApplicationController
   def user_params
     return params.require(:user).permit(:email, :password, :username, :full_name)
   end
-
->>>>>>> e31925709e02bc45a73575c9393aa4e42e12ec01
 end
