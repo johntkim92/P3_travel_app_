@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :users
+
   # setting root
   root 'application#welcome'
+
+
+  # users - did not do only yet to limit other RESTful actions - as we may need others to update, delete, etc.
+  resources :users
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
