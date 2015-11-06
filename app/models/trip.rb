@@ -1,6 +1,6 @@
 class Trip < ActiveRecord::Base
 
-  TAGS = [
+  TRIPTYPE = [
     'Summer', 'Winter', 'Family', 'Honeymoon', 'Other'
   ]
 
@@ -9,7 +9,7 @@ class Trip < ActiveRecord::Base
   validates :description, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :tags, inclusion: { in: TAGS }
+  validates :trip_type, inclusion: { in: TRIPTYPE }
   validates :notes, presence: true
 
   belongs_to :user

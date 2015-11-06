@@ -12,11 +12,11 @@
   <br/>
   <input type="date" name="trip[end_date]" placeholder="input end date" value="<%= @trip.end_date %>">
   <br/>
-  <select name="trip[tags]">
-    <% Trip::TAGS.each do |tag| %>
-      <option value="<%= tag %>"
-        <%= @trip.tags == tag ? "selected" : "" %>>
-        <%= tag %>
+  <select name="trip[trip_type]">
+    <% Trip::TRIPTYPE.each do |typ| %>
+      <option value="<%= typ %>"
+        <%= @trip.trip_type == typ ? "selected" : "" %>>
+        <%= typ %>
       </option>
     <% end %>
   </select>
