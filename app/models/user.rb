@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-<<<<<<< HEAD
-=======
 
   has_secure_password
 
@@ -16,7 +14,6 @@ class User < ActiveRecord::Base
   validates :full_name, presence: true, allow_nil: true
 
 
-  has_many :trips
-
->>>>>>> e31925709e02bc45a73575c9393aa4e42e12ec01
+  has_many :trips, dependent: :destroy
+  has_many :comments, through: :trips
 end

@@ -1,0 +1,11 @@
+<% @trips.each do |trip| %>
+
+  <h5><%= trip.title %> to <%= trip.destination %> from <%= trip.start_date %> to <%= trip.end_date %></h5>
+  <p>Description: <%= trip.description %></p>
+  <p>Type of Trip: <%= trip.trip_type %></p>
+  <p>Notes: <%= trip.notes %></p>
+
+  <hr/>
+
+
+<% end %>

@@ -2,23 +2,26 @@
    <input type="hidden" name="authenticity_token"
           value="<%= form_authenticity_token %>">
 
-  <input type="text" name="trip[title]" placeholder="input title">
+  <input type="text" name="trip[title]" placeholder="input title" value="<%= @trip.title %>">
   <br/>
-  <input type="text" name="trip[destination]" placeholder="input destination">
+  <input type="text" name="trip[destination]" placeholder="input destination" value="<%= @trip.destination %>">
   <br/>
-  <input type="text" name="trip[description]" placeholder="input description">
+  <input type="text" name="trip[description]" placeholder="input description" value="<%= @trip.description %>">
   <br/>
-  <input type="date" name="trip[start_date]" placeholder="input start date">
+  <input type="date" name="trip[start_date]" placeholder="input start date" value="<%= @trip.start_date %>">
   <br/>
-  <input type="date" name="trip[end_date]" placeholder="input end date">
+  <input type="date" name="trip[end_date]" placeholder="input end date" value="<%= @trip.end_date %>">
   <br/>
-  <select name="trip[tags]">
-    <% Trip::TAGS.each do |tag| %>
-      <option value="<%= tag %>">
-        <%= tag %>
+  <select name="trip[trip_type]">
+    <% Trip::TRIPTYPE.each do |typ| %>
+      <option value="<%= typ %>"
+        <%= @trip.trip_type == typ ? "selected" : "" %>>
+        <%= typ %>
       </option>
     <% end %>
   </select>
+  <br/>
+  <input type="text" name="trip[notes]" placeholder="input notes" value="<%= @trip.notes %>">
   <br/>
   <input type="submit" value="CREATE TRIP">
  </form>
