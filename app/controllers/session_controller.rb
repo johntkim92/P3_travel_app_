@@ -19,6 +19,12 @@ class SessionController < ApplicationController
     redirect_to root_path
   end
 
+  def current_tripper
+    # amiloggedin = !!session[:current_user_id]
+    # render json: current_user
+  end
+
+
   private
 
   def user_params
