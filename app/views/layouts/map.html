@@ -36,21 +36,24 @@
         border-color: #4d90fe;
       }
       #modal {
+        margin-top: 1rem;
         height: 75%;
         width: 35%;
         right: 10px;
         position: fixed;
-        background: red;
+        background: floralwhite;
         z-index: 10;
         opacity: 0.8;
       }
     </style>
   </head>
   <body>
-    <div id="modal" class="controls">
+    <div id="modal">
       "HELLO THERE, FRIEND"
+      <form class="" action="index.html" method="post">
+        <input id="pac-input" class="controls" type="text" placeholder="Where to James">
+      </form>
     </div>
-    <input id="pac-input" class="controls" type="text" placeholder="Where to James">
     <div id="map"></div>
     <script>
 // This example adds a search box to a map, using the Google Place Autocomplete
@@ -61,7 +64,8 @@ function initAutocomplete() {
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    disableDefaultUI: true
   });
 
   // Create the search box and link it to the UI element.
