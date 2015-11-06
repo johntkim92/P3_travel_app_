@@ -6,12 +6,13 @@ class SessionController < ApplicationController
 
     if user && user.authenticate(user_params[:password])
       session[:current_user_id] = user.id
-      flash[:message] = "thanks, logged in"
+      # flash[:message] = "thanks, logged in"
+      redirect_to application_mapp_path
     else
       flash[:message] = "username / password combo error"
+      redirect_to root_path
     end
 
-    redirect_to application_mapp_path
   end
 
   def destroy
