@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  # send people back to root unless logged in 
+  # send people back to root unless logged in
 
   def require_current_user
     redirect_to root_path unless logged_in?
