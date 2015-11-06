@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   resources :comments
   resources :trips
   # checking to see if one is logged in
@@ -17,7 +16,6 @@ Rails.application.routes.draw do
   # get '/session' => 'session#current_user '
   post '/session' => 'session#create'
   delete '/session' => 'session#destroy'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
