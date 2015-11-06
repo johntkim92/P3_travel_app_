@@ -35,9 +35,21 @@
       #pac-input:focus {
         border-color: #4d90fe;
       }
+      #modal {
+        height: 75%;
+        width: 35%;
+        right: 10px;
+        position: fixed;
+        background: red;
+        z-index: 10;
+        opacity: 0.8;
+      }
     </style>
   </head>
   <body>
+    <div id="modal" class="controls">
+      "HELLO THERE, FRIEND"
+    </div>
     <input id="pac-input" class="controls" type="text" placeholder="Where to James">
     <div id="map"></div>
     <script>
