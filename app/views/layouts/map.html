@@ -64,7 +64,6 @@ function initAutocomplete() {
     center: {lat: 0, lng: 0},
     zoom: 2,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    // disableDefaultUI: true
   });
 
   // Create the search box and link it to the UI element.
@@ -83,48 +82,24 @@ function initAutocomplete() {
       return;
     }
 
+    // Create a marker for each place.
+    markers.push(new google.maps.Marker({
+      map: map,
+      // icon: default, commented out for now so until we add custom icons
+      title: places[0].name,
+      position: places[0].geometry.location,
+      animation: google.maps.Animation.DROP
+    }));
 
-    //Commenting this out allows to have markers remain!
-    // Clear out the old markers.
-    // markers.forEach(function(marker) {
-    //   marker.setMap(null);
-    // });
-    // markers = [];
+    if (places[places.length-1].geometry.viewport) {
+      map.fitBounds(places[places.length-1].geometry.viewport);
+    } else {
+      map.setCenter(places[places.length-1].geometry.location);
+      map.setZoom(12);
+    }
+    console.log(places[places.length-1].place_id);
 
-    // For each place, get the icon, name and location.
-    // var bounds = new google.maps.LatLngBounds();
-    // places.forEach(function(place) {
-    //   var icon = {
-    //     url: place.icon,
-    //     size: new google.maps.Size(71, 71),
-    //     origin: new google.maps.Point(0, 0),
-    //     anchor: new google.maps.Point(17, 34),
-    //     scaledSize: new google.maps.Size(25, 25)
-    //   };
-
-      // Create a marker for each place.
-      markers.push(new google.maps.Marker({
-        map: map,
-        // icon: default,
-        title: places[0].name,
-        position: places[0].geometry.location,
-        animation: google.maps.Animation.DROP
-        // bounce: this.addListener('click', toggleBounce)
-      }
-      // marker.addListener('click', toggleBounce)
-      ));
-
-      if (places[0].geometry.viewport) {
-        map.fitBounds(places[0].geometry.viewport);
-      } else {
-        map.setCenter(places[0].geometry.location);
-        map.setZoom(12);
-      }
-      console.log(places[places.length-1].place_id);
-
-    });
-    // map.fitBounds(bounds);
-
+  });
 
 // Adding bounce funtion
 //   function toggleBounce() {
