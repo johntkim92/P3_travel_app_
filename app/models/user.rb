@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   validates :full_name, presence: true, allow_nil: true
 
 
-  has_many :trips
-
+  has_many :trips, dependent: :destroy
+  has_many :comments, through: :trips
 end

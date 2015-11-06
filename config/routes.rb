@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :comments
   resources :trips
   # checking to see if one is logged in
   get '/amiloggedin' => 'application#amiloggedin'
