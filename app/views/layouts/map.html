@@ -93,8 +93,9 @@ function initAutocomplete() {
         icon: icon,
         title: place.name,
         position: place.geometry.location,
-        animation: google.maps.Animation.DROP,
-      },
+        animation: google.maps.Animation.DROP
+        // bounce: this.addListener('click', toggleBounce)
+      }
       // marker.addListener('click', toggleBounce)
       ));
 
@@ -104,6 +105,7 @@ function initAutocomplete() {
       } else {
         bounds.extend(place.geometry.location);
       }
+      console.log(markers[0]);
     });
     map.fitBounds(bounds);
   });
