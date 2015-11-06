@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # setting root
   root 'application#welcome'
 
+  get 'application/mapp'
+
 
   # users - did not do only yet to limit other RESTful actions - as we may need others to update, delete, etc.
   resources :users

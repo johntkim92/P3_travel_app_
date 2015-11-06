@@ -11,7 +11,7 @@ class SessionController < ApplicationController
       flash[:message] = "username / password combo error"
     end
 
-    redirect_to root_path
+    redirect_to application_mapp_path
   end
 
   def destroy
