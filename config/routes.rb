@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # setting root
   root 'application#welcome'
 
+  get 'application/mapp'
+
 
   # users - did not do only yet to limit other RESTful actions - as we may need others to update, delete, etc.
   resources :users
@@ -21,7 +23,6 @@ Rails.application.routes.draw do
   get '/session' => 'session#current_tripper', defaults: { format: :json }
   post '/session' => 'session#create'
   delete '/session' => 'session#destroy'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
