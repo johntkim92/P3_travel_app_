@@ -6,10 +6,18 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def mapp
+    render '/mapp'
+  end
+
   def welcome
     render '/welcome'
   end
 
+  # def amiloggedin
+  #   amiloggedin = !!session[:current_user_id]
+  #   render json: current_user
+  # end
 
   private
 
