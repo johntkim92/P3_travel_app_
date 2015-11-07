@@ -28,7 +28,7 @@ class TripsController < ApplicationController
   end
 
   def index
-    @trips = current_user.trips
+    @trips = current_user.trips.includes(:comments)
   end
 
   def delete
