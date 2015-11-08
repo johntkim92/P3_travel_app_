@@ -61,4 +61,10 @@ getTrips();
       getTrips();
     });
   }
+
+  this.createComment = function(trip_id) {
+    console.log(this.newComment);
+    console.log(trip_id);
+  }
+
 }]);
