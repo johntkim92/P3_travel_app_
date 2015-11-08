@@ -48,7 +48,6 @@ POST /trips will take a JSON object as such:
   {
     authenticity_token: "sdlfkjsdlkq4lqwlkj",
     trip: {
-        id: 1,
         title: "Went to Peru",
         destination: "Huaraz, Peru",
         description: "Went to the mountains",

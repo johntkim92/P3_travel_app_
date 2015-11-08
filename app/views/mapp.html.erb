@@ -54,7 +54,17 @@
       <h1>Welcome, {{header.current_user.username}}!</h1>
     </header>
     <main ng-controller="TripsController as trips">
-      {{trips.foo}}
+      <h2>Where have you been?</h2>
+      <form ng-submit="trips.createTrip()">
+        <input type="text" placeholder="Title"/>
+        <input type="text" placeholder="Destination"/>
+        <input type="text" placeholder="Description"/>
+        <input type="date" placeholder="Start Date"/>
+        <input type="date" placeholder="End Date"/>
+        <input type="text" placeholder="Tags"/>
+        <input type="text" placeholder="Notes"/>
+        <input type="submit" value="Submit your Trip"/>
+      </form>
     </main>
     <div id="modal">
       "HELLO THERE, FRIEND"
