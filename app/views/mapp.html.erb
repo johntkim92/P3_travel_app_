@@ -54,6 +54,25 @@
       <h1>Welcome, {{header.current_user.username}}!</h1>
     </header>
     <main ng-controller="TripsController as trips">
+      <h2>All of your trips</h2>
+      <ul>
+        <li ng-repeat="trip in trips.current_user_trips">
+          Title: {{trip.title}}
+          <br/>
+          Destination: {{trip.destination}}
+          <br/>
+          Description: {{trip.description}}
+          <br/>
+          Start Date: {{trip.start_date}}
+          <br/>
+          End Date: {{trip.end_date}}
+          <br/>
+          Tags: {{trip.tags}}
+          <br/>
+          Notes: {{trip.notes}}
+          <br/>
+        </li>
+      </ul>
       <h2>Where have you been?</h2>
       <form ng-submit="trips.createTrip()">
         <input type="text" placeholder="Title"/>

@@ -15,6 +15,13 @@ app.controller('HeaderController', ['$http', function($http) {
 app.controller('TripsController', ['$http', function($http) {
   //get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  var controller = this;
+
+  // get trips for current User
+  $http.get('/trips').success(function(data) {
+    //add trips to controller, data comes back with user
+    controller.current_user_trips = data.trips;
+  });
 
   // create a Trip
   this.createTrip = function() {
