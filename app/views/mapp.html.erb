@@ -67,7 +67,7 @@
           <br/>
           End Date: {{trip.end_date}}
           <br/>
-          Tags: {{trip.tags}}
+          Tags: {{trip.trip_type}}
           <br/>
           Notes: {{trip.notes}}
           <br/>
@@ -75,13 +75,13 @@
       </ul>
       <h2>Where have you been?</h2>
       <form ng-submit="trips.createTrip()">
-        <input type="text" placeholder="Title"/>
-        <input type="text" placeholder="Destination"/>
-        <input type="text" placeholder="Description"/>
-        <input type="date" placeholder="Start Date"/>
-        <input type="date" placeholder="End Date"/>
-        <input type="text" placeholder="Tags"/>
-        <input type="text" placeholder="Notes"/>
+        <input type="text" ng-model="trips.newTripTitle" placeholder="Title"/>
+        <input type="text" ng-model="trips.newTripDestination" placeholder="Destination"/>
+        <input type="text" ng-model="trips.newTripDescription" placeholder="Description"/>
+        <input type="date" ng-model="trips.newTripStartDate" placeholder="Start Date"/>
+        <input type="date" ng-model="trips.newTripEndDate" placeholder="End Date"/>
+        <input type="text" ng-model="trips.newTripTripType" placeholder="Tags"/>
+        <input type="text" ng-model="trips.newTripNotes" placeholder="Notes"/>
         <input type="submit" value="Submit your Trip"/>
       </form>
     </main>

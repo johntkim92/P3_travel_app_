@@ -17,27 +17,30 @@ app.controller('TripsController', ['$http', function($http) {
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var controller = this;
 
-  // get trips for current User
-  $http.get('/trips').success(function(data) {
-    //add trips to controller, data comes back with user
-    controller.current_user_trips = data.trips;
-  });
+  var getTrips = function() {
+    // get trips for current User
+    $http.get('/trips').success(function(data) {
+      //add trips to controller, data comes back with user
+      controller.current_user_trips = data.trips;
+    });
+  }
+getTrips();
 
   // create a Trip
   this.createTrip = function() {
     $http.post('/trips', {
       authenticity_token: authenticity_token,
       trip: {
-          title: "Went to Peru",
-          destination: "Huaraz, Peru",
-          description: "Went to the mountains",
-          start_date: "03/03/2015",
-          end_date: "02/02/2016",
-          tags: "Honeymoon",
-          notes: "Great trip. good food"
+          title: this.newTripTitle,
+          destination: this.newTripDestination,
+          description: this.newTripDescription,
+          start_date: this.newTripStartDate,
+          end_date: this.newTripEndDate,
+          trip_type: this.newTripTripType,
+          notes: this.newTripNotes
       }
     }).success(function(data){
-      console.log(data);
+      getTrips();
     });
   }
 }]);

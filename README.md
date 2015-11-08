@@ -30,7 +30,7 @@ GET /trips will return array of trips complete with confessions subarray
         description: "Went to the mountains",
         start_date: "03/03/2015",
         end_date: "02/02/2016",
-        tags: "Honeymoon",
+        trip_type: "Honeymoon",
         notes: "Great trip. good food"
         comments: [
           {
@@ -53,7 +53,7 @@ POST /trips will take a JSON object as such:
         description: "Went to the mountains",
         start_date: "03/03/2015",
         end_date: "02/02/2016",
-        tags: "Honeymoon",
+        trip_type: "Honeymoon",
         notes: "Great trip. good food"
     }
   }
