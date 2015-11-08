@@ -51,11 +51,10 @@
   <body>
     <!-- John: Angular code -->
     <header ng-controller="HeaderController as header">
-      <h1>Welcome, Travelers!</h1>
-      {{header.foo}}
+      <h1>Welcome, {{header.current_user.username}}!</h1>
     </header>
-    <main>
-      main!
+    <main ng-controller="TripsController as trips">
+      {{trips.foo}}
     </main>
     <div id="modal">
       "HELLO THERE, FRIEND"
