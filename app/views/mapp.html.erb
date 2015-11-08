@@ -46,9 +46,58 @@
         z-index: 10;
         opacity: 0.8;
       }
+      #temp-overflow {
+        height: 200px;
+        overflow: auto;
+      }
     </style>
   </head>
   <body>
+    <!-- John: Angular code -->
+    <header ng-controller="HeaderController as header">
+      <h1>Welcome, {{header.current_user.username}}!</h1>
+    </header>
+    <main ng-controller="TripsController as trips" id="temp-overflow">
+      <h2>All of your trips</h2>
+      <ul>
+        <li ng-repeat="trip in trips.current_user_trips">
+          Title: {{trip.title}}
+          <br/>
+          Destination: {{trip.destination}}
+          <br/>
+          Description: {{trip.description}}
+          <br/>
+          Start Date: {{trip.start_date}}
+          <br/>
+          End Date: {{trip.end_date}}
+          <br/>
+          Tags: {{trip.trip_type}}
+          <br/>
+          Notes: {{trip.notes}}
+          <br/>
+        </li>
+      </ul>
+      <h2>Where have you been?</h2>
+      <form ng-submit="trips.createTrip()">
+        <input type="text" ng-model="trips.newTripTitle" placeholder="Title"/>
+        <br/>
+        <input type="text" ng-model="trips.newTripDestination" placeholder="Destination"/>
+        <br/>
+        <input type="text" ng-model="trips.newTripDescription" placeholder="Description"/>
+        <br/>
+        <input type="date" ng-model="trips.newTripStartDate" placeholder="Start Date"/>
+        <br/>
+        <input type="date" ng-model="trips.newTripEndDate" placeholder="End Date"/>
+        <br/>
+        <select ng-model="trips.newTripTripType">
+          <option ng-repeat="tripType in trips.TRIPTYPE">{{tripType}}</option>
+        </select>
+        <br/>
+        <input type="text" ng-model="trips.newTripNotes" placeholder="Notes"/>
+        <br/>
+        <input type="submit" value="Submit your Trip"/>
+      </form>
+    </main>
     <div id="modal">
       "HELLO THERE, FRIEND"
         <input id="pac-input" class="controls" type="text" placeholder="Where to James">

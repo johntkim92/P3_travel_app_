@@ -10,10 +10,16 @@ class TripsController < ApplicationController
     @trip = current_user.trips.new(trip_params)
 
     if @trip.save
-      redirect_to trips_path
+      # redirect_to trips_path
     else
-      flash[:message] = @trip.errors.full_messages.to_sentence
-      render :new
+      # flash[:message] = @trip.errors.full_messages.to_sentence
+      # render :new
+      render json: {
+        error: {
+          message:
+          @trip.errors.full_messages.to_sentence
+        }
+      }
     end
 
   end
