@@ -32,6 +32,17 @@ getTrips();
 
   // create a Trip
   this.createTrip = function() {
+
+    controller.current_user_trips.push({
+      title: this.newTripTitle + "...loading",
+      destination: this.newTripDestination + "...loading",
+      description: this.newTripDescription + "...loading",
+      start_date: this.newTripStartDate + "...loading",
+      end_date: this.newTripEndDate + "...loading",
+      trip_type: this.newTripTripType + "...loading",
+      notes: this.newTripNotes + "...loading"
+    });
+
     $http.post('/trips', {
       authenticity_token: authenticity_token,
       trip: {
@@ -44,6 +55,9 @@ getTrips();
           notes: this.newTripNotes
       }
     }).success(function(data){
+      controller.current_user_trips.pop();
+      controller.current_user_trips.push(data.trip);
+
       getTrips();
     });
   }
