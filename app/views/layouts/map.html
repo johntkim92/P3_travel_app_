@@ -67,6 +67,9 @@ function initAutocomplete() {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
   });
 
+  // Create the geocoder for alt long values
+  var geocoder = new google.maps.Geocoder();
+  
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);

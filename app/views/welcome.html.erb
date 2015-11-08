@@ -1,35 +1,50 @@
-<h1>Hello Traveler</h1>
+<!-- nav -->
+<nav class="pages-nav">
+  <div class="pages-nav__item"><a class="link link--page" href="#page-home">Home</a></div>
+  <div class="pages-nav__item"><a class="link link--page" href="#page-signin">Sign in</a></div>
+  <div class="pages-nav__item"><a class="link link--page" href="#page-signup">Register</a></div>
+</nav>
 
-<hr/>
+<!-- page stack -->
+<div class="pages-stack">
+  <!-- page -->
+  <div class="page" id="page-home">
+    <h1 class="head_text">Welcome to Travel App [only way to fly]</h1>
+    <p class="head_text">aFreeman, dLee, jKim, tChiriga</p>
+    <img src="/lib/images/image_1.jpg" alt="" />
+  </div>
+  <!-- page -->
+        <div class="fs-form-wrap page" id="fs-form-wrap">
+          <form id="myform" class="fs-form fs-form-full" autocomplete="off" action="<%= session_path %>" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <ol class="fs-fields">
+              <li>
+                <label class="fs-field-label fs-anim-upper" for="q1">Username</label>
+                <input name="user[username]" class="fs-anim-lower" id="q1" name="q1" type="text" placeholder="Joe_Travel" required/>
+              </li>
+              <li>
+                <label class="fs-field-label fs-anim-upper" for="q2" >and Password?</label>
+                <input name="user[password]" class="fs-anim-lower" id="q2" name="q2" type="password" placeholder="!@#$%^&*()" required/>
+              </li>
+            </ol><!-- /fs-fields -->
+            <button class="fs-submit" type="submit">Submit</button>
+          </form><!-- /fs-form -->
+        </div><!-- /fs-form-wrap -->
 
-<h3>Please Sign In</h3>
+  <!-- page -->
+  <div class="page" id="page-signup">
+    <div class="head_text">
+      <h2>Not Registered? Please Sign Up</h2>
+        <form action="<%= users_path %>" method="POST">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="text" name="user[username]" placeholder="desired username">
+          <input type="password" name="user[password]" placeholder="desired password">
+          <input type="email" name="user[email]" placeholder="your email address">
+          <input type="text" name="user[full_name]" placeholder="First Name and Last Nmae">
+          <input type="submit" value="Sign Up">
+        </form>
+      </div>
+  </div>
+</div>
 
-<form action="<%= session_path %>" method="POST">
-
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-  <input type="text" name="user[username]" placeholder="your username">
-  <br/>
-  <input type="password" name="user[password]" placeholder="enter password">
-  <br/>
-  <input type="submit" value="Sign In">
-</form>
-
-<hr/>
-
-<h3>Not Registered? Please Sign Up</h3>
-
-<form action="<%= users_path %>" method="POST">
-
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-  <input type="text" name="user[username]" placeholder="desired username">
-  <br/>
-  <input type="password" name="user[password]" placeholder="desired password">
-  <br/>
-  <input type="email" name="user[email]" placeholder="your email address">
-  <br/>
-  <input type="text" name="user[full_name]" placeholder="First Name and Last Nmae">
-  <br/>
-  <input type="submit" value="Sign Up">
-</form>
+<button class="menu-button"><span>Menu</span></button>

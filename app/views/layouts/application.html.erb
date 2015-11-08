@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="no-js">
 <head>
   <title>TravelApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/lib/css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="/lib/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/css/login-demo.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/css/login-component.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/css/cs-select.css" />
+  <link rel="stylesheet" type="text/css" href="/lib/css/cs-skin-boxes.css" />
+  <script src="/lib/js/modernizr-custom.js" charset="utf-8"></script>
 </head>
 <body>
 
@@ -35,5 +45,31 @@
   </form>
 <% end %>
 
+
+
+  <script src="/lib/js/classie.js" charset="utf-8"></script>
+  <script src="/lib/js/main.js" charset="utf-8"></script>
+  <script src="/lib/js/selectFx.js"></script>
+  <script src="/lib/js/fullscreenForm.js"></script>
+  <script>
+    (function() {
+      var formWrap = document.getElementById( 'fs-form-wrap' );
+
+      [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+        new SelectFx( el, {
+          stickyPlaceholder: false,
+          onChange: function(val){
+            document.querySelector('span.cs-placeholder').style.backgroundColor = val;
+          }
+        });
+      } );
+
+      new FForm( formWrap, {
+        onReview : function() {
+          classie.add( document.body, 'overview' ); // for demo purposes only
+        }
+      } );
+    })();
+  </script>
 </body>
 </html>
