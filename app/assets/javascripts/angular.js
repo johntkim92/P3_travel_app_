@@ -17,6 +17,10 @@ app.controller('TripsController', ['$http', function($http) {
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var controller = this;
 
+  //trip types for select in html
+  this.TRIPTYPE = ['Summer', 'Winter', 'Family', 'Honeymoon', 'Other'];
+  this.newTripTripType = "Other";
+
   var getTrips = function() {
     // get trips for current User
     $http.get('/trips').success(function(data) {
