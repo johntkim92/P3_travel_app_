@@ -49,6 +49,14 @@
     </style>
   </head>
   <body>
+    <!-- John: Angular code -->
+    <header ng-controller="HeaderController as header">
+      <h1>Welcome, Travelers!</h1>
+      {{header.foo}}
+    </header>
+    <main>
+      main!
+    </main>
     <div id="modal">
       "HELLO THERE, FRIEND"
         <input id="pac-input" class="controls" type="text" placeholder="Where to James">
