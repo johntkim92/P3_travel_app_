@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
     if @user.save
       # flash[:message] = "registered, please log in"
+      session[:current_user_id] = @user.id
+      flash[:message] = "thanks, registered and logged in"
       redirect_to application_mapp_path
     else
       flash[:message] = @user.errors.full_messages.to_sentence
