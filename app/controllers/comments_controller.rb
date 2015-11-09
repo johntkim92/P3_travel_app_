@@ -19,6 +19,6 @@ class CommentsController < ApplicationController
 
   def comment_params
     return params.require(:comment)
-      .permit(:entry)
+      .permit(:commenter, :entry)
   end
 end

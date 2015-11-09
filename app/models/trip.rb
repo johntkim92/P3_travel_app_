@@ -1,7 +1,7 @@
 class Trip < ActiveRecord::Base
 
   TRIPTYPE = [
-    'Summer', 'Winter', 'Family', 'Honeymoon', 'Other'
+    'Spring', 'Summer', 'Fall', 'Winter', 'Family', 'Friends', 'Honeymoon', 'Vacation', 'Other'
   ]
 
   validates :title, presence: true
@@ -12,5 +12,5 @@ class Trip < ActiveRecord::Base
   validates :trip_type, inclusion: { in: TRIPTYPE }
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
 end
