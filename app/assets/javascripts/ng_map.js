@@ -11,6 +11,6 @@ myApp.controller('mapController', function ($scope) {
       })
       locations.push({lat: dest.lat(), lng: dest.lng()})
       $scope.map.panTo({lat: dest.lat(), lng: dest.lng()})
-      // $scope.map.setZoom(7)
+      $scope.map.setZoom(7)
     }
 })
