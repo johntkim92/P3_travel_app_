@@ -58,18 +58,15 @@
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
+var destinations = [];
 
 function initAutocomplete() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -33.8688, lng: 151.2195},
-    zoom: 13,
+    center: {lat: 0, lng: 0},
+    zoom: 2,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    disableDefaultUI: true
   });
 
-  // Create the geocoder for alt long values
-  var geocoder = new google.maps.Geocoder();
-  
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
@@ -86,60 +83,45 @@ function initAutocomplete() {
       return;
     }
 
+    // Create a marker for each place.
+    markers.push(new google.maps.Marker({
+      map: map,
+      // icon: default, commented out for now so until we add custom icons
+      title: places[0].name,
+      position: places[0].geometry.location,
+      animation: google.maps.Animation.DROP
+    }));
 
-    //Commenting this out allows to have markers remain!
-    // Clear out the old markers.
-    // markers.forEach(function(marker) {
-    //   marker.setMap(null);
-    // });
-    // markers = [];
+    if (places[places.length-1].geometry.viewport) {
+      map.fitBounds(places[places.length-1].geometry.viewport);
+    } else {
+      map.setCenter(places[places.length-1].geometry.location);
+      map.setZoom(12);
+    }
+    destinations.push(places[places.length-1].place_id);
 
-    // For each place, get the icon, name and location.
-    var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
-      var icon = {
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
-
-      // Create a marker for each place.
-      markers.push(new google.maps.Marker({
-        map: map,
-        icon: icon,
-        title: place.name,
-        position: place.geometry.location,
-        animation: google.maps.Animation.DROP
-        // bounce: this.addListener('click', toggleBounce)
-      }
-      // marker.addListener('click', toggleBounce)
-      ));
-
-      if (place.geometry.viewport) {
-        // Only geocodes have viewport.
-        bounds.union(place.geometry.viewport);
-      } else {
-        bounds.extend(place.geometry.location);
-      }
-      console.log(markers[0]);
-    });
-    map.fitBounds(bounds);
   });
-
-// Adding bounce funtion
-//   function toggleBounce() {
-//   if (marker.getAnimation() !== null) {
-//     marker.setAnimation(null);
-//   } else {
-//     marker.setAnimation(google.maps.Animation.BOUNCE);
-//   }
-// }
 
   // [END region_getplaces]
 }
 
+var service = new google.maps.places.PlacesService(map);
+service.textSearch(request, callback)
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    var marker = new google.maps.Marker({
+      map: map,
+      place: {
+        placeId: results[0].place_id,
+        location: results[0].geometry.location
+      }
+    });
+  }
+// {
+//   location: map.getCenter(),
+// }
+}
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs62byxyB2tWJtn2zmT1oSYvq4UvN49HU&libraries=places&callback=initAutocomplete"
