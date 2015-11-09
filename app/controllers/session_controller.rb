@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     user_params[:username])
 
     if user && user.authenticate(user_params[:password])
-      
+
       # check back to see if token = SecureRandom.urlsafe_base64 is needed
 
       session[:current_user_id] = user.id
