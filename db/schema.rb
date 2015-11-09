@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109140648) do
+ActiveRecord::Schema.define(version: 20151109145945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20151109140648) do
     t.string   "title",                              null: false
     t.string   "destination",                        null: false
     t.string   "description",                        null: false
-    t.string   "trip_type",                          null: false
+    t.string   "trip_type"
     t.string   "notes"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
