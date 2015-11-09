@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-
+  include TripsHelper
   before_action :require_current_user
 
   def new
@@ -25,12 +25,26 @@ class TripsController < ApplicationController
   end
 
   def edit
+    # --- below is from Monday morning change
+    @trip = Trip.find(params[:id])
+    # --- end
   end
 
   def update
+    # --- below is from Monday morning change
+    @trip = Trip.find(params[:id])
+    @trip.update(trip_params)
+    flash[:message] = "Trip '#{@trip.title}' Updated!"
+    redirect_to trip_path(@trip)
+    # --- end
   end
 
   def show
+    # --- below is from Monday morning change
+    @trip = Trip.find(params[:id])
+    @comment = Comment.new
+    @comment.trip_id = @trip.id
+    # --- end
   end
 
   def index
@@ -40,12 +54,19 @@ class TripsController < ApplicationController
   def delete
   end
 
-  private
-
-  def trip_params
-    return params.require(:trip)
-    .permit(:title, :destination, :description, :start_date, :end_date, :trip_type, :notes)
+  def destroy
+    # --- below is from Monday morning change
+    @trip = Trip.find(params[:id])
+    @trip.destroy
+    redirect_to trips_path
+    # --- end
   end
 
+  private
+
+  def comment_params
+    return params.require(:comment)
+      .permit(:entry)
+  end
 
 end
