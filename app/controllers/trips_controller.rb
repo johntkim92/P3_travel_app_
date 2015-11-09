@@ -47,5 +47,9 @@ class TripsController < ApplicationController
     .permit(:title, :destination, :description, :start_date, :end_date, :trip_type, :notes)
   end
 
+  def comment_params
+    return params.require(:comment)
+      .permit(:entry)
+  end
 
 end
