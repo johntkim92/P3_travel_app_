@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 
   def create
-    @trip = Trip.find(params[:comment_id])
-    @comment = @trip.comments.new(comment_params)
+    trip = Trip.find(params[:trip_id])
+    @comment = trip.comments.new(comment_params)
 
     if @comment.save
 
