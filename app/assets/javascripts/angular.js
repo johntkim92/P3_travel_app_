@@ -63,8 +63,19 @@ getTrips();
   }
 
   this.createComment = function(trip_id) {
-    console.log(this.newComment);
-    console.log(trip_id);
+    $http.post('/trips/'+trip_id+'/comments', {
+      //include authenticity_token
+      authenticity_token: authenticity_token,
+      comment: {
+        trip_id: trip_id,
+        entry: this.newCommentEntry,
+        commenter: this.newCommentCommenter
+      }
+    }).success(function(data) {
+      console.log(data)
+    }).error(function(error) {
+      console.log(error)
+    })
   }
 
 }]);
