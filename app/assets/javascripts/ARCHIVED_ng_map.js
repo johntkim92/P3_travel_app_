@@ -2,7 +2,7 @@ var myApp = angular.module("mapp", ['ngMap'])
 
 var locations = [];
 var markers = [];
-myApp.controller('mapController', function ($scope) {
+myApp.controller('mapController', ['$scope', function ($scope) {
   $scope.markers = [];
 
   $scope.placeChanged = function () {
@@ -23,4 +23,4 @@ myApp.controller('mapController', function ($scope) {
     $scope.map.panTo({lat: dest.lat(), lng: dest.lng()})
     $scope.map.setZoom(7)
     }
-})
+}])
