@@ -1,9 +1,13 @@
 var myApp = angular.module("mapp", ['ngMap'])
 
-myApp.controller('mapController', function ($scope){
+var locations = [];
+myApp.controller('mapController', function ($scope) {
   $scope.placeChanged = function () {
     $scope.place = this.getPlace();
-    var location = $scope.place.geometry.location
-      console.log(location.lat(), location.lng());
-  }
+    var dest = $scope.place.geometry.location
+    locations.push([dest.lat(), dest.lng()])
+    $scope.addMarker($scope.place)
+    }
+
+
 })
