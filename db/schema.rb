@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20151109140648) do
     t.string   "notes"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.date     "start_date",  default: '2015-11-06', null: false
-    t.date     "end_date",    default: '2015-11-06', null: false
+    t.date     "start_date",  default: '2015-11-09', null: false
+    t.date     "end_date",    default: '2015-11-09', null: false
     t.string   "location_id"
   end
 
