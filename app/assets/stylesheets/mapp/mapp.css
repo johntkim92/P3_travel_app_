@@ -6,4 +6,12 @@ html, body {
 
 map {
   height: 100%;
+  z-index: -3;
+}
+
+input {
+  z-index: 3;
+  position: absolute;
+  top: 5rem;;
+  left: 5rem;
 }
