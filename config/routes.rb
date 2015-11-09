@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
+  resources :trips, defaults: { format: :json } do
+    resources :comments, shallow: true
+  end
 
-  resources :comments
-  resources :trips
+  # resources :comments
+  # resources :trips
+
   # checking to see if one is logged in
-  get '/amiloggedin' => 'application#amiloggedin'
+
 
   # setting root
   root 'application#welcome'
+
+  get 'application/mapp'
 
 
   # users - did not do only yet to limit other RESTful actions - as we may need others to update, delete, etc.
@@ -14,6 +20,7 @@ Rails.application.routes.draw do
 
   # session stuff - allows logging in and out
   # get '/session' => 'session#current_user '
+  get '/session' => 'session#current_tripper', defaults: { format: :json }
   post '/session' => 'session#create'
   delete '/session' => 'session#destroy'
 

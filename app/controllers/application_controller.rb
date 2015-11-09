@@ -1,19 +1,23 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
 
 
   helper_method :current_user
+
+  def mapp
+    render '/mapp', layout: 'angular'
+  end
 
   def welcome
     render '/welcome'
   end
 
-  def amiloggedin
-    amiloggedin = !!session[:current_user_id]
-    render json: current_user
-  end
+  # def amiloggedin
+  #   amiloggedin = !!session[:current_user_id]
+  #   render json: current_user
+  # end
 
   private
 
