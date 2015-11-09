@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
           @comment.errors.full_messages.to_sentence
         }
       }
+    end
   end
 
   private
