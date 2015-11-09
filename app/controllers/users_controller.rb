@@ -17,6 +17,28 @@ class UsersController < ApplicationController
 
   end
 
+  def edit
+    # --- below is untested code
+    @user = User.find(params[:id])
+    # --- end
+  end
+
+  def update
+    # --- below is untested code
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    flash[:message] = "User '#{@user.username}' Updated!"
+    redirect_to root_path
+    # --- end
+  end
+
+  def destroy
+    # --- below is untested code
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
+    # --- end
+  end
 
   # private methods
   private

@@ -11,7 +11,7 @@
 User + Session are all done the 'old fashioned way' via server-rendered erb.
 
 ROOT (/): Renders the Sign In/ Sign Up forms.
-<!-- POST /users will create a new user, redirect to ROOT -->
+POST /users will create a new user, redirect to ROOT
 POST /session will create a new session, redirect to SPA
 
 #JSON
