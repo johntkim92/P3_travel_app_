@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :comments, shallow: true
   end
 
+  resources :tags
+
   # resources :comments
   # resources :trips
 
