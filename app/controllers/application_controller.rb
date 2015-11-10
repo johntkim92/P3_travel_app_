@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def mapp
-    render '/mapp', layout: 'angular'
+    render '/mapp', layout: false
   end
 
   def welcome
