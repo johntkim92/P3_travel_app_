@@ -14,35 +14,18 @@
   <link rel="stylesheet" type="text/css" href="/lib/css/login-component.css" />
   <link rel="stylesheet" type="text/css" href="/lib/css/cs-select.css" />
   <link rel="stylesheet" type="text/css" href="/lib/css/cs-skin-boxes.css" />
+
   <script src="/lib/js/modernizr-custom.js" charset="utf-8"></script>
 </head>
 <body>
-  <!-- below are for flash messages -->
-
-    <% if flash[:message] %>
-      <div class="flash">
-        <%= flash[:message] %>
-      </div>
-    <% end %>
+<!-- below are for flash messages -->
+  <% if flash[:message] %>
+    <div class="flash">
+  <%= flash[:message] %>
+    </div>
+  <% end %>
 
   <%= yield %>
-
-  <% if current_user %>
-    <hr/>
-      <a href="<%= new_trip_path %>">
-        Create New Trip
-      </a>
-    <hr/>
-    <h3>
-      logged in as <%= current_user.username %>
-    </h3>
-    <hr/>
-    <form action="<%= session_path %>" method="POST">
-       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Log Out">
-    </form>
-  <% end %>
     <!-- scripts -->
     <script src="/lib/js/classie.js" charset="utf-8"></script>
     <script src="/lib/js/main.js" charset="utf-8"></script>
@@ -87,7 +70,7 @@
         } );
       })();
     </script>
-    <script src="js/classie.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/lib/js/classie.js"></script>
+    <script src="/lib/js/main.js"></script>
   </body>
 </html>
