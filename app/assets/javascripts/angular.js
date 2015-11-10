@@ -72,7 +72,7 @@ getTrips();
         commenter: this.newCommentCommenter
       }
     }).success(function(data) {
-      console.log(data)
+      getTrips();
     });
   }
 }]);
