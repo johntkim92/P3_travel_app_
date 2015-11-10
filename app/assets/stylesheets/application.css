@@ -14,9 +14,18 @@
  *= require_self
  */
 
- #modal {
-   background-color: rgba(0, 0, 0, 0.5);;
+ #modal, .app-header, .create-trip {
+   background-color: rgba(0, 0, 0, 0.1);
    position: absolute;
+      transition: 1s;
+ }
+
+ #modal:hover, .app-header:hover, .create-trip:hover {
+   background-color: rgba(0, 0, 0, 0.6);
+   position: absolute;
+ }
+
+ #modal {
    width: 25%;
    height: 75%;
    top: 50%;
@@ -25,19 +34,15 @@
  }
 
  .app-header {
-   background-color: rgba(0, 0, 0, 0.5);;
-   position: absolute;
    width: 100%;
    height: 75px;
    top: 0;
  }
 
 
- a.create-trip {
-   background-color: rgba(0, 0, 0, 0.5);;
+.create-trip {
    height: 75px;
    width: 25%;
-   position: absolute;
    bottom: 0;
    right: 0;
  }
