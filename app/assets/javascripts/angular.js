@@ -3,7 +3,7 @@ var app = angular.module('TravelApp', ['ngMap']);
 
 var locations = [];
 var markers = [];
-app.controller('mapController', ['$scope', function ($scope) {
+app.controller('mapController', function ($scope) {
   bounds = new google.maps.LatLngBounds({lat:-90, lng:180}, {lat:90, lng:-180})
   $scope.markers = [];
 
@@ -19,10 +19,11 @@ app.controller('mapController', ['$scope', function ($scope) {
     console.log(dest.lat(), dest.lng());
     // console.log($scope.markers);
     locations.push({lat: dest.lat(), lng: dest.lng()})
-    $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3)})
+
+    $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3.5)})
     $scope.map.setZoom(7)
-    }
-}])
+  }
+})
 
 //Header Controller
 app.controller('HeaderController', ['$http', function($http) {
