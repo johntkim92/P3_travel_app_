@@ -24,12 +24,16 @@ app.controller('mapController', function ($scope) {
     $scope.map.setZoom(7)
   }
   $scope.toggleBounce = function() {
-  if (this.getAnimation() != null) {
-    this.setAnimation(null);
-  } else {
-    this.setAnimation(google.maps.Animation.BOUNCE);
+    if (this.getAnimation() != null) {
+      this.setAnimation(null);
+    } else {
+      this.setAnimation(google.maps.Animation.BOUNCE);
+    }
   }
-}
+  $scope.shift = function() {
+    map.panTo({lat: trip_by_id.lat, lng: trip_by_id.lat})
+  }
+
 })
 
 //Header Controller
