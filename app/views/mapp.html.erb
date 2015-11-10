@@ -73,9 +73,9 @@
           </form>
         </main>
     </div>
-    <div class="timeline" ng-controller="TripsController as tripsline">
-      <div id="timeline">
-        <ul >
+    <div ng-controller="TripsController as tripsline" class='timeline' >
+      <div id='timeline'>
+        <ul id='dates'>
           <li ng-repeat="trip in tripsline.current_user_trips">
             <a href="#">{{trip.start_date}}</a>
           </li>
