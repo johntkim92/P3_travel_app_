@@ -11,9 +11,12 @@
     </head>
   <body>
       <div ng-controller="mapController">
-      <ng-map center="0, 0" zoom= 2 default-style="false" zoom-to-inlude-markers="true">
+      <ng-map center="40, -79" zoom=2 default-style="false" zoom-to-inlude-markers="true"
+      zoom-control="true"
+      zoom-control-options="{position: 'LEFT_BOTTOM'}"
+      map-type-control-options="{position: 'LEFT_BOTTOM'}">
         <input class="search" places-auto-complete types="['geocode']" on-place-changed="placeChanged()"/>
-        <marker position="-25.363882,131.044922" animation="DROP" title="Hello World!" on-click="toggleBounce()" on-click="shift()"></marker>
+        <marker position="-25.363882,131.044922" animation="DROP" title="Hello World!" on-click="toggleBounce()"></marker>
       </ng-map>
       <div/>
     <!-- John: Angular code -->

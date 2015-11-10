@@ -4,7 +4,6 @@ var app = angular.module('TravelApp', ['ngMap']);
 var locations = [];
 var markers = [];
 app.controller('mapController', function ($scope) {
-  bounds = new google.maps.LatLngBounds({lat:-90, lng:180}, {lat:90, lng:-180})
   $scope.markers = [];
 
   $scope.placeChanged = function () {
