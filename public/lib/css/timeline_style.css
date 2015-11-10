@@ -44,16 +44,17 @@ h1,h2,h4,h5,h6 {
 
 	#timeline {
 		bottom: 0;
-		width: 66%;
+		width: 60%;
 		height: 75px;
 		overflow: hidden;
 		/*margin: 100px auto;*/
 		position: absolute;
 		background: url('/lib/images/dot_new.png') left 35px repeat-x;
 		/*border: black solid 1px;*/
+		left: 6%;
 	}
 		#dates {
-			width: 66%;
+			width: 60%;
 			height: 40px;
 			overflow: hidden;
 			/*border: red solid 1px;*/
