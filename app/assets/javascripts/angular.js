@@ -15,6 +15,7 @@ app.controller('mapController', function ($scope) {
         animation: "DROP"
       })
     );
+    console.log($scope.place.name);
     console.log(dest.lat(), dest.lng());
     // console.log($scope.markers);
     locations.push({lat: dest.lat(), lng: dest.lng()})
@@ -22,6 +23,7 @@ app.controller('mapController', function ($scope) {
     $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3.5)})
     $scope.map.setZoom(7)
   }
+
   $scope.toggleBounce = function() {
     if (this.getAnimation() != null) {
       this.setAnimation(null);
@@ -52,7 +54,7 @@ app.controller('HeaderController', ['$http', function($http) {
 }]);
 
 //Trips Controller
-app.controller('TripsController', ['$http', function($http) {
+app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
   //get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var controller = this;
@@ -89,6 +91,8 @@ getTrips();
           title: this.newTripTitle,
           destination: this.newTripDestination,
           description: this.newTripDescription,
+          longitude: $scope.dest.lat(),
+          latitude: $scope.dest.lng(),
           start_date: this.newTripStartDate,
           end_date: this.newTripEndDate,
           trip_type: this.newTripTripType,
@@ -99,7 +103,10 @@ getTrips();
       controller.current_user_trips.push(data.trip);
 
       getTrips();
-    });
+    }).error(function(error){
+      console.log(error);
+      console.log($scope);
+    })
   }
 
   this.createComment = function(trip_id) {

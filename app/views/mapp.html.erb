@@ -18,6 +18,7 @@
       zoom-control="true"
       zoom-control-options="{position: 'LEFT_BOTTOM'}"
       map-type-control-options="{position: 'LEFT_BOTTOM'}">
+        <mapOption minZoom=2 />
         <input class="search" places-auto-complete types="['geocode']" on-place-changed="placeChanged()"/>
         <marker position="-25.363882,131.044922" animation="DROP" title="Hello World!" on-click="toggleBounce()"></marker>
       </ng-map>
@@ -38,6 +39,8 @@
               End Date: {{trip.end_date}}
               Tags: {{trip.trip_type}}
               Notes: {{trip.notes}}
+              Latitude: {{trip.latitude}}
+              Longitude: {{trip.longitude}}
               <h3>Comments:</h3>
               <form ng-submit="trips.createComment(trip.id)">
                 <input type="text" ng-model="trips.newCommentEntry" placeholder="entry"/>
