@@ -27,6 +27,7 @@
     </header> -->
     <div id="modal">
         <main ng-controller="TripsController as trips" id="temp-overflow">
+          <!-- List of All the Users Trips -->
           <h2>All of your trips</h2>
           <ul>
             <li ng-repeat="trip in trips.current_user_trips">
@@ -56,6 +57,7 @@
               </div>
             </li>
           </ul>
+          <!-- Form to Enter Users Latest Trip -->
           <h2>Where have you been?</h2>
           <form ng-submit="trips.createTrip()">
             <input type="text" ng-model="trips.newTripTitle" placeholder="Title"/>
@@ -63,9 +65,6 @@
             <input type="text" ng-model="trips.newTripDescription" placeholder="Description"/>
             <input type="date" ng-model="trips.newTripStartDate" placeholder="Start Date"/>
             <input type="date" ng-model="trips.newTripEndDate" placeholder="End Date"/>
-            <select ng-model="trips.newTripTripType">
-              <option ng-repeat="tripType in trips.TRIPTYPE">{{tripType}}</option>
-            </select>
             <input type="text" ng-model="trips.newTripNotes" placeholder="Notes"/>
             <input type="submit" value="Submit your Trip"/>
           </form>
