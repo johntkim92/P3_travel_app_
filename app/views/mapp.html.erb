@@ -6,6 +6,9 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
+    <link rel="stylesheet" media="screen"  href="/lib/css/timeline_style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
     <%= stylesheet_link_tag 'mapp', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'angular', 'data-turbolinks-track' => true %>
     </head>
@@ -20,60 +23,108 @@
       </ng-map>
       <div/>
     <!-- John: Angular code -->
-    <header ng-controller="HeaderController as header">
+    <!-- <header ng-controller="HeaderController as header">
       <h1>Welcome, {{header.current_user.username}}!</h1>
-    </header>
-    <main ng-controller="TripsController as trips" id="temp-overflow">
-      <h2>All of your trips</h2>
-      <ul>
-        <li ng-repeat="trip in trips.current_user_trips">
-          Title: {{trip.title}}
-          <br/>
-          Destination: {{trip.destination}}
-          <br/>
-          Description: {{trip.description}}
-          <br/>
-          Start Date: {{trip.start_date}}
-          <br/>
-          End Date: {{trip.end_date}}
-          <br/>
-          Tags: {{trip.trip_type}}
-          <br/>
-          Notes: {{trip.notes}}
-          <br/>
-          <h3>Comments:</h3>
-          <form ng-submit="trips.createComment(trip.id)">
-            <input type="text" ng-model="trips.newCommentEntry" placeholder="entry"/>
-            <br/>
-            <input type="text" ng-model="trips.newCommentCommenter" placeholder="commenter"/>
-            <input type="submit" value="Comment"/>
-          </form>
-        </li>
-      </ul>
-      <h2>Where have you been?</h2>
-      <form ng-submit="trips.createTrip()">
-        <input type="text" ng-model="trips.newTripTitle" placeholder="Title"/>
-        <br/>
-        <input type="text" ng-model="trips.newTripDestination" placeholder="Destination"/>
-        <br/>
-        <input type="text" ng-model="trips.newTripDescription" placeholder="Description"/>
-        <br/>
-        <input type="date" ng-model="trips.newTripStartDate" placeholder="Start Date"/>
-        <br/>
-        <input type="date" ng-model="trips.newTripEndDate" placeholder="End Date"/>
-        <br/>
-        <select ng-model="trips.newTripTripType">
-          <option ng-repeat="tripType in trips.TRIPTYPE">{{tripType}}</option>
-        </select>
-        <br/>
-        <input type="text" ng-model="trips.newTripNotes" placeholder="Notes"/>
-        <br/>
-        <input type="submit" value="Submit your Trip"/>
-      </form>
-    </main>
+    </header> -->
     <div id="modal">
-      "HELLO THERE, FRIEND"
-        <input id="pac-input" class="controls" type="text" placeholder="Where to James">
+        <main ng-controller="TripsController as trips" id="temp-overflow">
+          <h2>All of your trips</h2>
+          <ul>
+            <li ng-repeat="trip in trips.current_user_trips">
+              Title: {{trip.title}}
+              Destination: {{trip.destination}}
+              Description: {{trip.description}}
+              Start Date: {{trip.start_date}}
+              End Date: {{trip.end_date}}
+              Tags: {{trip.trip_type}}
+              Notes: {{trip.notes}}
+              <h3>Comments:</h3>
+              <form ng-submit="trips.createComment(trip.id)">
+                <input type="text" ng-model="trips.newCommentEntry" placeholder="entry"/>
+                <br/>
+                <input type="text" ng-model="trips.newCommentCommenter" placeholder="commenter"/>
+                <input type="submit" value="Comment"/>
+              </form>
+            </li>
+          </ul>
+          <h2>Where have you been?</h2>
+          <form ng-submit="trips.createTrip()">
+            <input type="text" ng-model="trips.newTripTitle" placeholder="Title"/>
+            <input class="search" places-auto-complete types="['geocode']" on-place-changed="placeChanged()"/>
+            <input type="text" ng-model="trips.newTripDescription" placeholder="Description"/>
+            <input type="date" ng-model="trips.newTripStartDate" placeholder="Start Date"/>
+            <input type="date" ng-model="trips.newTripEndDate" placeholder="End Date"/>
+            <select ng-model="trips.newTripTripType">
+              <option ng-repeat="tripType in trips.TRIPTYPE">{{tripType}}</option>
+            </select>
+            <input type="text" ng-model="trips.newTripNotes" placeholder="Notes"/>
+            <input type="submit" value="Submit your Trip"/>
+          </form>
+        </main>
     </div>
+    <div id="timeline">
+      <ul id="dates">
+        <li><a href="#">11/24/2011</a></li>
+        <li><a href="#">6/28/2012</a></li>
+        <li><a href="#">11/13/2013</a></li>
+        <li><a href="#">1/1/2015</a></li>
+        <li><a href="#">4/2/2015</a></li>
+        <li><a href="#">6/30/2015</a></li>
+        <li><a href="#">8/3/2015</a></li>
+        <li><a href="#">11/2/2015</a></li>
+
+      </ul>
+      <ul id="issues">
+        <li id="?">
+          <h1>my trip1</h1>
+          <!-- <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p> -->
+        </li>
+        <li id="?">
+          <h1>my trip to 2</h1>
+          <!-- <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p> -->
+        </li>
+        <li id="?">
+          <h1>my trip to 3</h1>
+          <!-- <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p> -->
+        </li>
+        <li id="?">
+          <h1>my trip to 4</h1>
+          <!-- <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p> -->
+        </li>
+        <li id="?">
+          <h1>my trip to 5</h1>
+          <!-- <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p> -->
+        </li>
+        <li id="?">
+          <h1>This one is a really really really really long title...............</h1>
+          <!-- <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p> -->
+        </li>
+        <li id="?">
+          <h1>Vacaton to Europe</h1>
+          <!-- <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p> -->
+        </li>
+        <li id="?">
+          <h1>Trip to Montauk</h1>
+          <!-- <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p> -->
+        </li>
+        <!-- <li id="1971">
+          <img src="images/5.png" width="256" height="256" />
+          <h1>1971</h1>
+          <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+        </li> -->
+      </ul>
+
+      <a href="#" id="next">+</a>
+      <a href="#" id="prev">-</a>
+    </div>
+    <script>
+      $(function(){
+        $().timelinr({
+          arrowKeys: 'true',
+          startAt: 0
+        })
+      });
+    </script>
+    <script src="/lib/js/jquery.timelinr-0.9.54.js"></script>
   </body>
 </html>
