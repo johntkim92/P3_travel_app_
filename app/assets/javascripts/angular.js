@@ -3,6 +3,10 @@ var app = angular.module('TravelApp', ['ngMap']);
 
 var locations = [];
 var markers = [];
+var destName;
+var destLat;
+var destLng;
+
 app.controller('mapController', function ($scope) {
   $scope.markers = [];
 
@@ -15,13 +19,19 @@ app.controller('mapController', function ($scope) {
         animation: "DROP"
       })
     );
-    console.log(dest.lat(), dest.lng());
+    destLat = $scope.place.geometry.location.lat();
+    destLng = $scope.place.geometry.location.lng();
+    destName = $scope.place.name;
+    console.log(destLat);
+    console.log(destLng);
+    console.log($scope.place.name);
     // console.log($scope.markers);
     locations.push({lat: dest.lat(), lng: dest.lng()})
 
     $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3.5)})
     $scope.map.setZoom(7)
   }
+
   $scope.toggleBounce = function() {
     if (this.getAnimation() != null) {
       this.setAnimation(null);
@@ -52,7 +62,7 @@ app.controller('HeaderController', ['$http', function($http) {
 }]);
 
 //Trips Controller
-app.controller('TripsController', ['$http', function($http) {
+app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
   //get authenticity_token from DOM (rails injects it on load)
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var controller = this;
@@ -66,6 +76,7 @@ app.controller('TripsController', ['$http', function($http) {
     $http.get('/trips').success(function(data) {
       //add trips to controller, data comes back with user
       controller.current_user_trips = data.trips;
+      console.log($scope);
     });
   }
   this.getTrips();
@@ -87,8 +98,10 @@ app.controller('TripsController', ['$http', function($http) {
       authenticity_token: authenticity_token,
       trip: {
           title: this.newTripTitle,
-          destination: this.newTripDestination,
+          destination: destName,
           description: this.newTripDescription,
+          longitude: destLng,
+          latitude: destLat,
           start_date: this.newTripStartDate,
           end_date: this.newTripEndDate,
           trip_type: this.newTripTripType,
@@ -97,8 +110,13 @@ app.controller('TripsController', ['$http', function($http) {
     }).success(function(data){
       controller.current_user_trips.pop();
       controller.current_user_trips.push(data.trip);
-
       controller.getTrips();
+      console.log(destLat);
+      console.log(destLng);
+    }).error(function(error){
+      console.log(error);
+      console.log(destLat);
+      console.log(destLng);
     });
   }
 }]);
