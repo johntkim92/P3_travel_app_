@@ -23,6 +23,13 @@ app.controller('mapController', function ($scope) {
     $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3.5)})
     $scope.map.setZoom(7)
   }
+  $scope.toggleBounce = function() {
+  if (this.getAnimation() != null) {
+    this.setAnimation(null);
+  } else {
+    this.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
 })
 
 //Header Controller
