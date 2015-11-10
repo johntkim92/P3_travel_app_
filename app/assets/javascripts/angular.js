@@ -3,6 +3,10 @@ var app = angular.module('TravelApp', ['ngMap']);
 
 var locations = [];
 var markers = [];
+var destName;
+var destLat;
+var destLng;
+
 app.controller('mapController', function ($scope) {
   $scope.markers = [];
 
@@ -15,8 +19,12 @@ app.controller('mapController', function ($scope) {
         animation: "DROP"
       })
     );
+    destLat = $scope.place.geometry.location.lat();
+    destLng = $scope.place.geometry.location.lng();
+    destName = $scope.place.name;
+    console.log(destLat);
+    console.log(destLng);
     console.log($scope.place.name);
-    console.log(dest.lat(), dest.lng());
     // console.log($scope.markers);
     locations.push({lat: dest.lat(), lng: dest.lng()})
 
@@ -68,6 +76,7 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
     $http.get('/trips').success(function(data) {
       //add trips to controller, data comes back with user
       controller.current_user_trips = data.trips;
+      console.log($scope);
     });
   }
   this.getTrips();
@@ -89,10 +98,10 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
       authenticity_token: authenticity_token,
       trip: {
           title: this.newTripTitle,
-          destination: this.newTripDestination,
+          destination: destName,
           description: this.newTripDescription,
-          longitude: $scope.dest.lat(),
-          latitude: $scope.dest.lng(),
+          longitude: destLng,
+          latitude: destLat,
           start_date: this.newTripStartDate,
           end_date: this.newTripEndDate,
           trip_type: this.newTripTripType,
@@ -101,17 +110,14 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
     }).success(function(data){
       controller.current_user_trips.pop();
       controller.current_user_trips.push(data.trip);
-
-<<<<<<< HEAD
-      getTrips();
+      controller.getTrips();
+      console.log(destLat);
+      console.log(destLng);
     }).error(function(error){
       console.log(error);
-      console.log($scope);
-    })
-=======
-      controller.getTrips();
+      console.log(destLat);
+      console.log(destLng);
     });
->>>>>>> 01e3b5c5b36b272b51981bdfea5e41a045f6e232
   }
 }]);
 
