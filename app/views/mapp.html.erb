@@ -23,9 +23,9 @@
       </ng-map>
       <div/>
     <!-- John: Angular code -->
-    <!-- <header ng-controller="HeaderController as header">
-      <h1>Welcome, {{header.current_user.username}}!</h1>
-    </header> -->
+    <header ng-controller="HeaderController as header">
+    <h1>Welcome, {{header.current_user.username}}!</h1>
+    </header>
     <div id="modal">
         <main ng-controller="TripsController as trips" id="temp-overflow">
           <h2>All of your trips</h2>
@@ -38,13 +38,23 @@
               End Date: {{trip.end_date}}
               Tags: {{trip.trip_type}}
               Notes: {{trip.notes}}
+            <div ng-controller="CommentsController as commentsCtrl">
               <h3>Comments:</h3>
-              <form ng-submit="trips.createComment(trip.id)">
-                <input type="text" ng-model="trips.newCommentEntry" placeholder="entry"/>
-                <br/>
-                <input type="text" ng-model="trips.newCommentCommenter" placeholder="commenter"/>
-                <input type="submit" value="Comment"/>
-              </form>
+                <ul>
+                  <li ng-repeat="comment in trip.comments">
+                    Entry: {{comment.entry}}
+                    <br/>
+                    Author: {{comment.commenter}}
+                    <br/>
+                  </li>
+                </ul>
+                <form ng-submit="commentsCtrl.createComment()">
+                  <input type="text" ng-model="commentsCtrl.newCommentEntry" placeholder="entry"/>
+                  <br/>
+                  <!-- <input type="text" ng-model="commentsCtrl.newCommentCommenter" placeholder="commenter"/> -->
+                  <input type="submit" value="Comment"/>
+                </form>
+              </div>
             </li>
           </ul>
           <h2>Where have you been?</h2>
@@ -116,6 +126,7 @@
 
       <a href="#" id="next">+</a>
       <a href="#" id="prev">-</a>
+
     </div>
     <script>
       $(function(){
