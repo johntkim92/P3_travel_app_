@@ -51,13 +51,8 @@ ActiveRecord::Schema.define(version: 20151110165828) do
     t.string   "notes"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-<<<<<<< HEAD
-    t.date     "start_date",  default: '2015-11-08', null: false
-    t.date     "end_date",    default: '2015-11-08', null: false
-=======
     t.date     "start_date",  default: '2015-11-09', null: false
     t.date     "end_date",    default: '2015-11-09', null: false
->>>>>>> 4a56401f870652876bc60886dada20fa727d859e
     t.string   "location_id"
     t.string   "latitude"
     t.string   "longitude"
