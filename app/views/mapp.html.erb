@@ -18,11 +18,9 @@
       zoom-control="true"
       zoom-control-options="{position: 'LEFT_BOTTOM'}"
       map-type-control-options="{position: 'LEFT_BOTTOM'}">
-<<<<<<< HEAD
         <mapOption minZoom=2 />
         <input class="search" places-auto-complete types="['geocode']" on-place-changed="placeChanged()"/>
-=======
->>>>>>> 4a56401f870652876bc60886dada20fa727d859e
+
         <marker position="-25.363882,131.044922" animation="DROP" title="Hello World!" on-click="toggleBounce()"></marker>
       </ng-map>
       <div/>
@@ -147,3 +145,108 @@
     <script src="/lib/js/jquery.timelinr-0.9.54.js"></script>
   </body>
 </html>
+
+[
+    {
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "saturation": -100
+            },
+            {
+                "gamma": 0.54
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "stylers": [
+            {
+                "color": "#4d4946"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "gamma": 0.48
+            }
+        ]
+    },
+    {
+        "featureType": "transit.station",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "gamma": 7.18
+            }
+        ]
+    }
+]
