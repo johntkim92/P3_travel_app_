@@ -75,23 +75,25 @@
           <br/>
           Notes: {{trip.notes}}
           <br/>
-          <h3>Comments:</h3>
-          <ul>
-            <li ng-repeat="comment in trip.comments">
-              Entry: {{comment.entry}}
-              <br/>
-              Author: {{comment.commenter}}
-              <br/>
+          <div ng-controller="CommentsController as commentsCtrl">
+            <h3>Comments:</h3>
+              <ul>
+                <li ng-repeat="comment in trip.comments">
+                  Entry: {{comment.entry}}
+                  <br/>
+                  Author: {{comment.commenter}}
+                  <br/>
+                </li>
+              </ul>
+              <form ng-submit="commentsCtrl.createComment()">
+                <input type="text" ng-model="commentsCtrl.newCommentEntry" placeholder="entry"/>
+                <br/>
+                <!-- <input type="text" ng-model="commentsCtrl.newCommentCommenter" placeholder="commenter"/> -->
+                <input type="submit" value="Comment"/>
+              </form>
+            </div>
             </li>
           </ul>
-          <form ng-submit="trips.createComment(trip.id)">
-            <input type="text" ng-model="trips.newCommentEntry" placeholder="entry"/>
-            <br/>
-            <input type="text" ng-model="trips.newCommentCommenter" placeholder="commenter"/>
-            <input type="submit" value="Comment"/>
-          </form>
-        </li>
-      </ul>
       <h2>Where have you been?</h2>
       <form ng-submit="trips.createTrip()">
         <input type="text" ng-model="trips.newTripTitle" placeholder="Title"/>
