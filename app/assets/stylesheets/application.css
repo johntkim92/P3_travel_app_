@@ -17,7 +17,7 @@
  #modal {
    background-color: rgba(0, 0, 0, 0.5);;
    position: absolute;
-   width: 33%;
+   width: 25%;
    height: 75%;
    top: 50%;
    right: 0;
@@ -36,7 +36,7 @@
  a.create-trip {
    background-color: rgba(0, 0, 0, 0.5);;
    height: 75px;
-   width: 33%;
+   width: 25%;
    position: absolute;
    bottom: 0;
    right: 0;
