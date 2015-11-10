@@ -7,5 +7,7 @@ json.trip do
   json.end_date @trip.end_date
   json.trip_type @trip.trip_type
   json.notes @trip.notes
+  json.latitude @trip.latitude
+  json.longitude @trip.longitude
   json.comments []
 end
