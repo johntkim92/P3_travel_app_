@@ -16,6 +16,7 @@ json.trips(@trips) do |trip|
     # include comment fields
     json.id comment.id
     json.entry comment.entry
+    json.commenter comment.commenter
 
   end
 end

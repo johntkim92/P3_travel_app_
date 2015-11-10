@@ -76,6 +76,14 @@
           Notes: {{trip.notes}}
           <br/>
           <h3>Comments:</h3>
+          <ul>
+            <li ng-repeat="comment in trip.comments">
+              Entry: {{comment.entry}}
+              <br/>
+              Author: {{comment.commenter}}
+              <br/>
+            </li>
+          </ul>
           <form ng-submit="trips.createComment(trip.id)">
             <input type="text" ng-model="trips.newCommentEntry" placeholder="entry"/>
             <br/>
