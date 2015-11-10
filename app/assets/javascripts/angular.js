@@ -4,14 +4,12 @@ var app = angular.module('TravelApp', ['ngMap']);
 var locations = [];
 var markers = [];
 app.controller('mapController', ['$scope', function ($scope) {
+  bounds = new google.maps.LatLngBounds({lat:-90, lng:180}, {lat:90, lng:-180})
   $scope.markers = [];
 
   $scope.placeChanged = function () {
     $scope.place = this.getPlace();
     var dest = $scope.place.geometry.location
-    // $scope.addOject(markers, marker)
-    //
-    // $scope.addOjects(markers)
     $scope.markers.push(new google.maps.Marker({
         map: $scope.map,
         position: dest,
@@ -21,7 +19,7 @@ app.controller('mapController', ['$scope', function ($scope) {
     console.log(dest.lat(), dest.lng());
     // console.log($scope.markers);
     locations.push({lat: dest.lat(), lng: dest.lng()})
-    $scope.map.panTo({lat: dest.lat(), lng: dest.lng()})
+    $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3)})
     $scope.map.setZoom(7)
     }
 }])
