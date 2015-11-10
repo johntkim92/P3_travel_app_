@@ -30,8 +30,13 @@ app.controller('mapController', function ($scope) {
       this.setAnimation(google.maps.Animation.BOUNCE);
     }
   }
+  // To do on click to shift screen over
   $scope.shift = function() {
-    map.panTo({lat: trip_by_id.lat, lng: trip_by_id.lat})
+    // console.log('cliked');
+    $scope.place = this.getPlace();
+    var dest = $scope.place.geometry.location
+    $scope.map.panTo({lat: dest.lat(),
+                      lng: dest.lat()})
   }
 
 })

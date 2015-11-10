@@ -11,10 +11,11 @@
     </head>
   <body>
       <div ng-controller="mapController">
-      <map center="0, 0" zoom= 2 minZoom= 2>
+      <ng-map center="0, 0" zoom= 2 default-style="false" zoom-to-inlude-markers="true">
         <input class="search" places-auto-complete types="['geocode']" on-place-changed="placeChanged()"/>
-        <marker position="-25.363882,131.044922" animation="DROP" title="Hello World!" on-click="toggleBounce()"></marker>
-      </map>
+        <marker position="-25.363882,131.044922" animation="DROP" title="Hello World!" on-click="toggleBounce()" on-click="shift()"></marker>
+      </ng-map>
+      <div/>
     <!-- John: Angular code -->
     <header ng-controller="HeaderController as header">
       <h1>Welcome, {{header.current_user.username}}!</h1>
