@@ -63,14 +63,14 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
   this.TRIPTYPE = ['Summer', 'Winter', 'Family', 'Honeymoon', 'Other'];
   this.newTripTripType = "Other";
 
-  var getTrips = function() {
+  this.getTrips = function() {
     // get trips for current User
     $http.get('/trips').success(function(data) {
       //add trips to controller, data comes back with user
       controller.current_user_trips = data.trips;
     });
   }
-getTrips();
+  this.getTrips();
 
   // create a Trip
   this.createTrip = function() {
@@ -102,27 +102,34 @@ getTrips();
       controller.current_user_trips.pop();
       controller.current_user_trips.push(data.trip);
 
+<<<<<<< HEAD
       getTrips();
     }).error(function(error){
       console.log(error);
       console.log($scope);
     })
+=======
+      controller.getTrips();
+    });
+>>>>>>> 01e3b5c5b36b272b51981bdfea5e41a045f6e232
   }
+}]);
 
-  this.createComment = function(trip_id) {
-    $http.post('/trips/'+trip_id+'/comments', {
+
+app.controller('CommentsController', ['$http', '$scope', function($http, $scope) {
+  //get authenticity_token from DOM (rails injects it on load)
+  var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  //create a comment
+  this.createComment = function() {
+    $http.post('/trips/'+$scope.$parent.trip.id+'/comments', {
       //include authenticity_token
       authenticity_token: authenticity_token,
       comment: {
-        trip_id: trip_id,
-        entry: this.newCommentEntry,
-        commenter: this.newCommentCommenter
+        // trip_id: trip_id,
+        entry: this.newCommentEntry
       }
     }).success(function(data) {
-      console.log(data)
-    }).error(function(error) {
-      console.log(error)
-    })
+      $scope.$parent.trips.getTrips();
+    });
   }
-
 }]);
