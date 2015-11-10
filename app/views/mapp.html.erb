@@ -75,12 +75,12 @@
     </div>
     <div class="timeline" ng-controller="TripsController as tripsline">
       <div id="timeline">
-        <ul id="dates">
+        <ul >
           <li ng-repeat="trip in tripsline.current_user_trips">
             <a href="#">{{trip.start_date}}</a>
           </li>
         </ul>
-        
+
         <ul id="issues">
           <li id="?">
             <h1>my trip1</h1>
