@@ -18,8 +18,8 @@
       zoom-control="true"
       zoom-control-options="{position: 'LEFT_BOTTOM'}"
       map-type-control-options="{position: 'LEFT_BOTTOM'}">
-        <mapOption minZoom=2 />
-        <marker position="-25.363882,131.044922" animation="DROP" title="Hello World!" on-click="toggleBounce()"></marker>
+        <!-- <mapOption minZoom=2 /> -->
+        <marker ng-repeat="trip in trips" position="trip.latitude,trip.longitude" animation="DROP" title="locali.name" on-click="toggleBounce()"></marker>
       </ng-map>
       <div/>
     <!-- John: Angular code -->
