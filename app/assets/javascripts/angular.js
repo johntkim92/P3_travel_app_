@@ -7,6 +7,7 @@ var destName;
 var destLat;
 var destLng;
 app.controller('mapController', function ($scope) {
+  var controller = this;
   $scope.placeChanged = function () {
     $scope.place = this.getPlace();
     var dest = $scope.place.geometry.location
@@ -28,6 +29,7 @@ app.controller('mapController', function ($scope) {
     $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3.5)})
     $scope.map.setZoom(7)
   }
+  console.log(controller);
 
   $scope.show = function() {
     if (this.getAnimation() != null) {
@@ -53,7 +55,6 @@ app.controller('HeaderController', ['$http', function($http) {
     console.log(controller.current_user);
   });
 }]);
-var trips;
 //Trips Controller
 app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
   //get authenticity_token from DOM (rails injects it on load)
@@ -69,8 +70,12 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
     $http.get('/trips').success(function(data) {
       //add trips to controller, data comes back with user
       controller.current_user_trips = data.trips;
-      var trips = data.trips;
-      console.log(trips);
+      controller.trips = [];
+
+      angular.forEach(data.trips, function(value) {
+        controller.trips.push({lat: value.latitude, lng: value.longitude})
+      });
+
       console.log($scope);
       console.log(controller.current_user_trips);
     });
