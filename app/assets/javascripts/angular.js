@@ -29,16 +29,12 @@ app.controller('mapController', function ($scope) {
     $scope.map.setZoom(7)
   }
 
-  $scope.toggleBounce = function() {
+  $scope.show = function() {
     if (this.getAnimation() != null) {
       this.setAnimation(null);
     } else {
       this.setAnimation(google.maps.Animation.BOUNCE);
     }
-  }
-  // To do on click to shift screen over
-  $scope.shift = function() {
-    // console.log('cliked');
     $scope.place = this.getPlace();
     var dest = $scope.place.geometry.location
     $scope.map.panTo({lat: dest.lat(),
