@@ -22,10 +22,6 @@
         <marker position="-25.363882,131.044922" animation="DROP" title="Hello World!" on-click="toggleBounce()"></marker>
       </ng-map>
       <div/>
-    <!-- John: Angular code -->
-    <!-- <header ng-controller="HeaderController as header">
-    <h1>Welcome, {{header.current_user.username}}!</h1>
-    </header> -->
     <div id="modal">
         <main ng-controller="TripsController as trips" id="temp-overflow">
           <!-- List of All the Users Trips -->
@@ -46,20 +42,17 @@
                 <ul>
                   <li ng-repeat="comment in trip.comments">
                     Entry: {{comment.entry}}
-                    <br/>
                     Author: {{comment.commenter}}
-                    <br/>
                   </li>
                 </ul>
                 <form ng-submit="commentsCtrl.createComment()">
                   <input type="text" ng-model="commentsCtrl.newCommentEntry" placeholder="entry"/>
-                  <br/>
-                  <!-- <input type="text" ng-model="commentsCtrl.newCommentCommenter" placeholder="commenter"/> -->
                   <input type="submit" value="Comment"/>
                 </form>
               </div>
             </li>
           </ul>
+
           <!-- Form to Enter Users Latest Trip -->
           <h2>Where have you been?</h2>
           <form ng-submit="trips.createTrip()">
