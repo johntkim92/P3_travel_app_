@@ -6,10 +6,8 @@ var markers = [];
 var destName;
 var destLat;
 var destLng;
-
 app.controller('mapController', function ($scope) {
-  $scope.markers = [];
-
+  var controller = this;
   $scope.placeChanged = function () {
     $scope.place = this.getPlace();
     var dest = $scope.place.geometry.location
@@ -31,17 +29,14 @@ app.controller('mapController', function ($scope) {
     $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3.5)})
     $scope.map.setZoom(7)
   }
+  console.log(controller);
 
-  $scope.toggleBounce = function() {
+  $scope.show = function() {
     if (this.getAnimation() != null) {
       this.setAnimation(null);
     } else {
       this.setAnimation(google.maps.Animation.BOUNCE);
     }
-  }
-  // To do on click to shift screen over
-  $scope.shift = function() {
-    // console.log('cliked');
     $scope.place = this.getPlace();
     var dest = $scope.place.geometry.location
     $scope.map.panTo({lat: dest.lat(),
@@ -57,10 +52,9 @@ app.controller('HeaderController', ['$http', function($http) {
   $http.get('/session').success(function(data) {
     //setting curent user to data.current user because data comes nested in current user
     controller.current_user = data.current_user;
-    // console.log(controller.current_user);
+    console.log(controller.current_user);
   });
 }]);
-
 //Trips Controller
 app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
   //get authenticity_token from DOM (rails injects it on load)
@@ -76,7 +70,14 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
     $http.get('/trips').success(function(data) {
       //add trips to controller, data comes back with user
       controller.current_user_trips = data.trips;
+      controller.trips = [];
+
+      angular.forEach(data.trips, function(value) {
+        controller.trips.push({lat: value.latitude, lng: value.longitude})
+      });
+
       console.log($scope);
+      console.log(controller.current_user_trips);
     });
   }
   this.getTrips();
