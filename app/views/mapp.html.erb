@@ -18,17 +18,18 @@
       var styles = [{"stylers":[{"visibility":"on"},{"saturation":-100},{"gamma":0.54}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#4d4946"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"gamma":0.48}]},{"featureType":"transit.station","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"gamma":7.18}]}]
     </script>
       <div ng-controller="mapController">
-        <ng-map center="40, -79"
-                zoom=2
+        <ng-map center="0,0"
+                zoom=3
+                minZoom=3
                 default-style="false"
                 zoom-control="true"
                 zoom-control-options="{position: 'LEFT_BOTTOM'}"
-                zoom-to-include-markers="true"
                 map-type-control-options="{position: 'LEFT_BOTTOM'}"
                 styles=[{"stylers":[{"visibility":"on"},{"saturation":-100},{"gamma":0.54}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#4d4946"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"gamma":0.48}]},{"featureType":"transit.station","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"gamma":7.18}]}]
                 >
-          <!-- <mapOption minZoom=2 /> -->
-          <marker ng-repeat="trip in trips.trips" position="{{trip.latitude}},{{trip.longitude}}" animation="DROP" title="{{trip.name}}" on-click="show()"></marker>
+                <!-- zoom-to-include-markers="true"
+                minZoom=2  -->
+          <!-- <marker ng-repeat="trip in trips.trips" position="{{trip.latitude}},{{trip.longitude}}" animation="DROP" title="{{trip.name}}" on-click="show()"></marker> -->
         </ng-map>
       </div>
 
