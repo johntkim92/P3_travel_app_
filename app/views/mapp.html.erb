@@ -26,8 +26,9 @@
     <!-- <header ng-controller="HeaderController as header">
     <h1>Welcome, {{header.current_user.username}}!</h1>
     </header> -->
+    <main ng-controller="TripsController as trips" id="temp-overflow">
+
     <div id="modal">
-        <main ng-controller="TripsController as trips" id="temp-overflow">
           <!-- List of All the Users Trips -->
           <h2>All of your trips</h2>
           <ul>
@@ -71,14 +72,11 @@
             <input type="text" ng-model="trips.newTripNotes" placeholder="Notes"/>
             <input type="submit" value="Submit your Trip"/>
           </form>
-        </main>
     </div>
-    <div ng-controller="TripsController as tripsline" class='timeline' >
+    <div class='timeline'>
       <div id='timeline'>
         <ul id='dates'>
-          <li ng-repeat="trip in tripsline.current_user_trips">
-            <a href="#">{{trip.start_date}}</a>
-          </li>
+          <li ng-repeat="trip in trips.current_user_trips"><a href="#">{{trip.start_date}}</a></li>
         </ul>
 
         <ul id="issues">
@@ -126,6 +124,8 @@
 
       </div>
     </div>
+  </main>
+
     <script>
       $(function(){
         $().timelinr({
