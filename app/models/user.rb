@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   }
   validates :email, presence: true, uniqueness: true, allow_nil:true
   validates :full_name, presence: true, allow_nil: true
-  validates :user_market, inclusion: { in: USERMARKER }
+  validates :user_marker, inclusion: { in: USERMARKER }
 
 
   has_many :trips, dependent: :destroy
