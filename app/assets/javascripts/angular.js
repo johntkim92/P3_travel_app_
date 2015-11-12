@@ -139,8 +139,8 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
         title: this.editTripTitle,
         destination: trip.destination,
         description: this.editTripDescription,
-        longitude: 1,
-        latitude: 2,
+        longitude: trip.longitude,
+        latitude: trip.latitude,
         start_date: this.editTripStartDate,
         end_date: this.editTripEndDate,
         trip_type: trip.trip_type,
@@ -148,6 +148,14 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
       }
     }).success(function(data) {
       controller.getTrips();
+      console.log(destLng);
+      console.log(destLat);
+      console.log(destName);
+    }).error(function(data, status) {
+      console.log(data);
+      console.log(destLng);
+      console.log(destLat);
+      console.log(destName);
     });
   }
 
