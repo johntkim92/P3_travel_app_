@@ -58,7 +58,7 @@ h1,h2,h4,h5,h6 {
 	}
 
 		#dates {
-			width: 60% !important;
+			width: 60%;
 			height: 40px ;
 			overflow: hidden ;
 			/*border: red solid 1px;*/
@@ -69,7 +69,7 @@ h1,h2,h4,h5,h6 {
 			#dates li.ng-scope {
 				list-style: none ;
 				float: left ;
-				width: 100px !important;
+				width: 100px;
 				height: 40px ;
 				font-size: 1em ;
 				text-align: center ;

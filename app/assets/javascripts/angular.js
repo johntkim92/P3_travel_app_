@@ -166,6 +166,7 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
       controller.getTrips();
     }).error(function(data, status) {
       controller.getTrips();
+      console.log(authenticity_token);
     });
   }
   this.getTrips();
