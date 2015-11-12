@@ -8,6 +8,10 @@ var destLat;
 var destLng;
 app.controller('mapController', function ($scope) {
   var controller = this;
+  $scope.$on('mapInitialized', function(evt, evtMap) {
+            map = evtMap;
+            map.setOptions({minZoom: 2})
+          });
   $scope.placeChanged = function () {
     $scope.place = this.getPlace();
     var dest = $scope.place.geometry.location
