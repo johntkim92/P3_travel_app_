@@ -3,6 +3,13 @@ class User < ActiveRecord::Base
   has_secure_password
 
 
+  USERMARKER = [
+    "/lib/images/marker_andrew.png",
+    "/lib/images/marker_john.png",
+    "/lib/images/marker_tendai.png",
+    "/lib/images/marker_donghwa.png"
+  ]
+
   # added allow_nil to others than password as they might be helpful when updating others???
 
   validates :username, presence: true, uniqueness: true, allow_nil: true
