@@ -8,6 +8,10 @@ var destLat;
 var destLng;
 app.controller('mapController', function ($scope) {
   var controller = this;
+  $scope.$on('mapInitialized', function(evt, evtMap) {
+            map = evtMap;
+            map.setOptions({minZoom: 2})
+          });
   $scope.placeChanged = function () {
     $scope.place = this.getPlace();
     var dest = $scope.place.geometry.location
@@ -26,21 +30,20 @@ app.controller('mapController', function ($scope) {
     // console.log($scope.markers);
     locations.push({lat: dest.lat(), lng: dest.lng()})
 
-    $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3.5)})
-    $scope.map.setZoom(7)
+    $scope.map.panTo({lat: dest.lat(), lng: (dest.lng() + 3)})
+    $scope.map.setZoom(6)
   }
-  console.log(controller);
 
   $scope.show = function() {
     if (this.getAnimation() != null) {
       this.setAnimation(null);
     } else {
       this.setAnimation(google.maps.Animation.BOUNCE);
+      console.log(this);
+      var dest = this.position
+      $scope.map.panTo({lat: dest.lat() + 3,
+                        lng: dest.lat()})
     }
-    $scope.place = this.getPlace();
-    var dest = $scope.place.geometry.location
-    $scope.map.panTo({lat: dest.lat(),
-                      lng: dest.lat()})
   }
 
 })
