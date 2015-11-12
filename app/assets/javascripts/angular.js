@@ -123,6 +123,25 @@ app.controller('TripsController', ['$http', '$scope', function($http, $scope) {
       console.log(destLng);
     });
   }
+
+  this.editTrip = function(trip) {
+    $http.patch('/trips/'+trip.id, {
+      authenticity_token: authenticity_token,
+      trip: {
+        title: this.editTripTitle,
+        destination: trip.destination,
+        description: this.editTripDescription,
+        longitude: 1,
+        latitude: 2,
+        start_date: this.editTripStartDate,
+        end_date: this.editTripEndDate,
+        trip_type: trip.trip_type,
+        notes: this.editTripNotes
+      }
+    }).success(function(data) {
+      controller.getTrips();
+    });
+  }
 }]);
 
 

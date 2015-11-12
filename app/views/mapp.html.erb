@@ -51,6 +51,15 @@
               Notes: {{trip.notes}}
               Latitude: {{trip.latitude}}
               Longitude: {{trip.longitude}}
+              <form ng-submit="trips.editTrip(trip)">
+                <input type="text" ng-model="trips.editTripTitle" placeholder="Title" value="{{trip.title}}"/>
+                <input type="text" ng-model="trips.editTripDescription" placeholder="Description" value="{{trip.description}}"/>
+                <input type="date" ng-model="trips.editTripStartDate" placeholder="Start Date"/>
+                <input type="date" ng-model="trips.editTripEndDate" placeholder="End Date"/>
+                <input type="text" ng-model="trips.editTripNotes" placeholder="Notes" value="{{trip.notes}}"/>
+                <input type="submit" value="Edit your Trip"/>
+              </form>
+
             <div ng-controller="CommentsController as commentsCtrl">
               <h3>Comments:</h3>
                 <ul>

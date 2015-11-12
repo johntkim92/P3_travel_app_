@@ -35,7 +35,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trip.update(trip_params)
     flash[:message] = "Trip '#{@trip.title}' Updated!"
-    redirect_to trip_path(@trip)
+    # redirect_to trip_path(@trip)
     # --- end
   end
 
